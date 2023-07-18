@@ -1,17 +1,18 @@
 ---
 // Astro Blog
 
+import Layout from '../layouts/Layout.astro';
+
 console.log("Hello, world!")
 ---
 
-<html>
-  <body>
-    <h1>Olá, Mundo!</h1>
-  </body>
-</html>
+<Layout title="Home">
+  <h1>Olá, Mundo!</h1>
+</Layout>
 
 <style>
   h1 {
-    color: orange;
+    color: teal;
+    font-family: sans-serif, serif;
   }
 </style>

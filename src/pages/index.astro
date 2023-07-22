@@ -2,12 +2,25 @@
 // Astro Blog
 
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
 console.log("Hello, world!")
+
+const allPosts = await getCollection('posts');
 ---
 
 <Layout title="Home">
   <h1>Olá, Mundo!</h1>
+  <ul>
+    {allPosts.map(post => 
+        <li>
+          <a href={'/post/' + post.slug}>{post.data.title}</a>
+          ({post.data.date})
+          <p>{post.data.descriptio}</p>
+          
+        </li>
+    )}
+  </ul>
 </Layout>
 
 <style>

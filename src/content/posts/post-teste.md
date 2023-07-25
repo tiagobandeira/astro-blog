@@ -2,6 +2,7 @@
 title: Teste Em Produção
 description: Algum outro post sobre algum outro assunto
 date: 21-07-2023
+tags: ["python","java"]
 ---
 
 # Outro Post Qualquer

@@ -2,6 +2,7 @@
 title: Boas Vindas
 description: Descrição do post de boas vindas.
 date: 20-07-2023
+tags: ["astro", "blog"]
 ---
 
 # Bem-vindo(a) ao Atro Blog

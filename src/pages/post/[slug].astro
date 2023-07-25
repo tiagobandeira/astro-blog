@@ -22,15 +22,15 @@ if (post === undefined) {
 const { Content } = await post.render();
 
 // Get related posts
-const t = post.data.tags
+const tags = post.data.tags
 const relatedPosts = await getCollection('posts', (post)=>{
   
   if(post.slug == slug){
     return false
   }
 
-  for (const i of t) {
-    if (post.data.tags.includes(i)){
+  for (const t of tags) {
+    if (post.data.tags.includes(t)){
       return true
     }
   }

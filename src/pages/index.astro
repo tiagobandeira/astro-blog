@@ -16,7 +16,7 @@ const allPosts = await getCollection('posts');
         <li>
           <a href={'/post/' + post.slug}>{post.data.title}</a>
           ({post.data.date})
-          <p>{post.data.descriptio}</p>
+          <p>{post.data.description}</p>
           
         </li>
     )}

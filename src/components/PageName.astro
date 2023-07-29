@@ -1,0 +1,13 @@
+---
+const { pageName } = Astro.props
+---
+<section class="page-title">
+    <h1>{ pageName }</h1>
+    <slot />
+</section>
+
+<style>
+    section h1{
+        font-size: x-large;
+    }
+</style>

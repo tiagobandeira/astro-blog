@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import PageName from '../../components/PageName.astro'
 
 import { getEntry, getEntries } from "astro:content";
 
@@ -39,12 +40,13 @@ const relatedPosts = await getCollection('posts', (post)=>{
 
 ---
 <Layout title={post.data.title}>
-    <h1>{post.data.title}</h1>
-    <p>
-      {post.data.description} 
-      {post.data.tags.map(tag => <span> #{tag} </span>)}
-    </p>
-    <p>{post.data.date}</p>
+    <PageName pageName={post.data.title}>
+      <p>
+        {post.data.description} 
+        {post.data.tags.map(tag => <span> #{tag} </span>)}
+      </p>
+      <p>{post.data.date}</p>
+    </PageName>
     <Content/> 
     <b>Posts relacionados:</b>
     {relatedPosts.map(p=><a>{p.data.title}</a>)}

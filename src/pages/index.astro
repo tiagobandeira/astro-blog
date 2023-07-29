@@ -2,11 +2,18 @@
 
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import PageName from '../components/PageName.astro'
 
 const allPosts = await getCollection('posts');
 ---
 
 <Layout title="Home">
+  <PageName pageName="Astro Blog">
+      <p><i>"A mente que se abre a uma nova ideia jamais voltará ao seu tamanho original."</i> - Albert Einstein</p>
+      <span class="tag">#Tecnologia</span>
+      <span class="tag">#Curiosidades</span>
+      <span class="tag">#Tutoriais</span>
+  </PageName>
   <ul>
     {allPosts.map(post => 
         <li>

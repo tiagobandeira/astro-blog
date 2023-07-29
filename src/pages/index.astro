@@ -14,6 +14,10 @@ const allPosts = await getCollection('posts');
       <span class="tag">#Curiosidades</span>
       <span class="tag">#Tutoriais</span>
   </PageName>
+  <section id="about-me">
+    <h3>Bem-vindo ao Astro Blog!</h3>
+    <p>Explore o vasto universo de conhecimento aqui, onde as estrelas da programação brilham, as harmonias da música ecoam e os mundos de assuntos fascinantes colidem. Navegue por nossos posts repletos de artigos, tutoriais e muito mais. Embarque em uma jornada intergaláctica através de diversos temas, sempre com um toque especial que nos torna únicos. Venha conosco em busca de novos horizontes e descubra as maravilhas do conhecimento no Astro Blog. Vamos decolar juntos nessa viagem cósmica! <br/> &#128640; &#127756; </p>
+  </section> 
   <ul>
     {allPosts.map(post => 
         <li>

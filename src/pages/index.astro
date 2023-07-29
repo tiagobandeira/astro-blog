@@ -1,16 +1,12 @@
 ---
-// Astro Blog
 
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-
-console.log("Hello, world!")
 
 const allPosts = await getCollection('posts');
 ---
 
 <Layout title="Home">
-  <h1>Olá, Mundo!</h1>
   <ul>
     {allPosts.map(post => 
         <li>
@@ -25,10 +21,3 @@ const allPosts = await getCollection('posts');
     )}
   </ul>
 </Layout>
-
-<style>
-  h1 {
-    color: teal;
-    font-family: sans-serif, serif;
-  }
-</style>

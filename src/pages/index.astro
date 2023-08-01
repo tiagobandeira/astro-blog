@@ -5,7 +5,12 @@ import { getCollection } from 'astro:content';
 import PageName from '../components/PageName.astro'
 import Articles from '../components/Articles.astro'
 
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection('posts').catch((e)=> {
+  if(e.title == 'Collection does not exist'){
+    return e.title
+  }
+  return undefined
+});
 ---
 
 <Layout title="Home">
@@ -15,10 +20,10 @@ const allPosts = await getCollection('posts');
       <span class="tag">#Curiosidades</span>
       <span class="tag">#Tutoriais</span>
   </PageName>
-  <section id="about-me">
+  <section>
     <h3>Bem-vindo ao Astro Blog!</h3>
     <p>Explore o vasto universo de conhecimento aqui, onde as estrelas da programação brilham, as harmonias da música ecoam e os mundos de assuntos fascinantes colidem. Navegue por nossos posts repletos de artigos, tutoriais e muito mais. Embarque em uma jornada intergaláctica através de diversos temas, sempre com um toque especial que nos torna únicos. Venha conosco em busca de novos horizontes e descubra as maravilhas do conhecimento no Astro Blog. Vamos decolar juntos nessa viagem cósmica! <br/> &#128640; &#127756; </p>
   </section> 
 
-  <Articles title="Artigos recentes" posts={allPosts}/>
+  <Articles title="Ultimos artigos" posts={allPosts}/>
 </Layout>

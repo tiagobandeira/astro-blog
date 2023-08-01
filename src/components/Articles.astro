@@ -1,5 +1,7 @@
 ---
-const { title, posts } = Astro.props
+const { title, posts: query_posts } = Astro.props
+const collectionDoesNotExistMessageError = "Sem artigos por enquanto."
+const unexpectedErrorMessageError = "Ocorreu um erro inesperado."
 ---
 <style>
     #articles{
@@ -58,8 +60,13 @@ const { title, posts } = Astro.props
 
 <section>
     <h3> {title} </h3> 
+    {()=>{
+        if(query_posts == undefined){
+            return unexpectedErrorMessageError;
+        }
+    }}
     <div id="articles">
-        {posts.map(post =>
+        {query_posts == 'Collection does not exist' || query_posts == undefined  ? collectionDoesNotExistMessageError : query_posts.map(post =>
             <article class="card">
                 <div class="card-header">
                     <a href={'/post/' + post.slug} >

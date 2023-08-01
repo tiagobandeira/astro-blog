@@ -1,0 +1,83 @@
+---
+const { title, posts } = Astro.props
+---
+<style>
+    #articles{
+        display: flex; 
+        flex-flow: row wrap; 
+        justify-content: space-between;
+        column-gap: 1em;
+        row-gap: 1em;
+    }
+    @media only screen and (min-width: 700px) {
+        .card{
+            max-width: 305px;
+        }
+        
+    }
+    .card{
+        flex-grow: 1;
+        box-shadow: 0px 0px 2px lightblue;
+        padding: 1em;
+    }
+    .card a{
+        color: inherit;
+        text-decoration: inherit;
+    }
+    .card a:hover span{
+        color: rgb(117 117 255 );
+        text-decoration: inherit;
+    }
+    .card a:hover b{
+        color: rgb(117 117 255 );
+        text-decoration: underline;
+    }
+    .card-content{
+        padding-left: 2px;
+        font-size: 15px;
+        align-self: stretch;
+        
+    }
+    .card-content p{
+        margin: 4px 0px 4px 0px;
+    }
+    .card-footer{
+        display: flex; 
+        flex-wrap: wrap; 
+        align-items: center;
+        font-size: 14px;
+    }
+    .label{
+        color: rgb(113 113 122 / 1);
+        margin-right: 4px;
+    }
+    .tag{
+        font-size: 14px;
+    }
+</style>
+
+<section>
+    <h3> {title} </h3> 
+    <div id="articles">
+        {posts.map(post =>
+            <article class="card">
+                <div class="card-header">
+                    <a href={'/post/' + post.slug} >
+                        <b>{post.data.title}</b>
+                    </a>    
+                </div>
+                <div class="card-content">
+                    <p> {post.data.description} </p>
+                </div>
+                <div class="card-footer">
+                    <span class="label">
+                        {post.data.date}
+                    </span>
+                    {post.data.tags.map(tag => <span class="tag">  #{tag} </span>)}
+                </div>                   
+            </article>
+        )}
+    </div>
+</section>
+
+

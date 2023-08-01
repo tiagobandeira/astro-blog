@@ -3,6 +3,7 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import PageName from '../components/PageName.astro'
+import Articles from '../components/Articles.astro'
 
 const allPosts = await getCollection('posts');
 ---
@@ -18,17 +19,6 @@ const allPosts = await getCollection('posts');
     <h3>Bem-vindo ao Astro Blog!</h3>
     <p>Explore o vasto universo de conhecimento aqui, onde as estrelas da programação brilham, as harmonias da música ecoam e os mundos de assuntos fascinantes colidem. Navegue por nossos posts repletos de artigos, tutoriais e muito mais. Embarque em uma jornada intergaláctica através de diversos temas, sempre com um toque especial que nos torna únicos. Venha conosco em busca de novos horizontes e descubra as maravilhas do conhecimento no Astro Blog. Vamos decolar juntos nessa viagem cósmica! <br/> &#128640; &#127756; </p>
   </section> 
-  <ul>
-    {allPosts.map(post => 
-        <li>
-          <a href={'/post/' + post.slug}>{post.data.title}</a>
-          ({post.data.date})
-          <p>
-            {post.data.description} 
-            {post.data.tags.map(tag => <span> #{tag} </span>)}
-          </p>
-          
-        </li>
-    )}
-  </ul>
+
+  <Articles title="Artigos recentes" posts={allPosts}/>
 </Layout>

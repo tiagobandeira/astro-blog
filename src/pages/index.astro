@@ -1,16 +1,13 @@
 ---
+import { getEntry } from 'astro:content';
 
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
 import PageName from '../components/PageName.astro'
 import Articles from '../components/Articles.astro'
 
-const allPosts = await getCollection('posts').catch((e)=> {
-  if(e.title == 'Collection does not exist'){
-    return e.title
-  }
-  return undefined
-});
+const featuredPostsSlugs = ['bem-vindo-blog-astro', 'post-teste']
+const queryPosts = await Promise.all(featuredPostsSlugs.map((slug)=>getEntry('posts',slug)))
+const featuredPosts = queryPosts.filter((post)=> post != undefined)
 ---
 
 <Layout title="Home">
@@ -25,5 +22,5 @@ const allPosts = await getCollection('posts').catch((e)=> {
     <p>Explore o vasto universo de conhecimento aqui, onde as estrelas da programação brilham, as harmonias da música ecoam e os mundos de assuntos fascinantes colidem. Navegue por nossos posts repletos de artigos, tutoriais e muito mais. Embarque em uma jornada intergaláctica através de diversos temas, sempre com um toque especial que nos torna únicos. Venha conosco em busca de novos horizontes e descubra as maravilhas do conhecimento no Astro Blog. Vamos decolar juntos nessa viagem cósmica! <br/> &#128640; &#127756; </p>
   </section> 
 
-  <Articles title="Ultimos artigos" posts={allPosts}/>
+  <Articles title="Artigos em destaque" posts={featuredPosts}/>
 </Layout>

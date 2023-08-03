@@ -1,8 +1,38 @@
 ---
-const { title, posts: query_posts } = Astro.props
-const collectionDoesNotExistMessageError = "Sem artigos por enquanto."
-const unexpectedErrorMessageError = "Ocorreu um erro inesperado."
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+    title: string;
+    posts: (CollectionEntry<'posts'> | undefined)[];
+    
+}
+const { title, posts } = Astro.props
 ---
+
+<section>
+    <h3> {title} </h3> 
+    <div id="articles">
+        {!posts.length ? "Sem artigos por enquanto.": posts.map((post: CollectionEntry<'posts'>) => 
+            <article class="card">
+                <div class="card-header">
+                    <a href={'/post/' + post.slug} >
+                        <b>{post.data.title}</b>
+                    </a>    
+                </div>
+                <div class="card-content">
+                    <p> {post.data.description} </p>
+                </div>
+                <div class="card-footer">
+                    <span class="label">
+                        {post.data.date}
+                    </span>
+                    {post.data.tags.map(tag => <span class="tag">  #{tag} </span>)}
+                </div>                   
+            </article>
+        )}
+    </div>
+</section>
+
 <style>
     #articles{
         display: flex; 
@@ -57,34 +87,4 @@ const unexpectedErrorMessageError = "Ocorreu um erro inesperado."
         font-size: 14px;
     }
 </style>
-
-<section>
-    <h3> {title} </h3> 
-    {()=>{
-        if(query_posts == undefined){
-            return unexpectedErrorMessageError;
-        }
-    }}
-    <div id="articles">
-        {query_posts == 'Collection does not exist' || query_posts == undefined  ? collectionDoesNotExistMessageError : query_posts.map(post =>
-            <article class="card">
-                <div class="card-header">
-                    <a href={'/post/' + post.slug} >
-                        <b>{post.data.title}</b>
-                    </a>    
-                </div>
-                <div class="card-content">
-                    <p> {post.data.description} </p>
-                </div>
-                <div class="card-footer">
-                    <span class="label">
-                        {post.data.date}
-                    </span>
-                    {post.data.tags.map(tag => <span class="tag">  #{tag} </span>)}
-                </div>                   
-            </article>
-        )}
-    </div>
-</section>
-
 

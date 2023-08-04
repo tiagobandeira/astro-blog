@@ -41,13 +41,22 @@ const relatedPosts = await getCollection('posts', (post)=>{
 ---
 <Layout title={post.data.title}>
     <PageName pageName={post.data.title}>
-      <p>
-        {post.data.description} 
-        {post.data.tags.map(tag => <span> #{tag} </span>)}
-      </p>
-      <p>{post.data.date}</p>
+      <p>{post.data.description}</p>
     </PageName>
+    <section id="post-info">
+      Tags: {post.data.tags.map(tag => <span class="tag"> #{tag} </span>)} <br/>
+      Criado em: <span class="label">{post.data.date}</span>
+    </section>
+    
+    
     <Content/> 
     <b>Posts relacionados:</b>
     {relatedPosts.map(p=><a>{p.data.title}</a>)}
 </Layout>
+
+<style>
+  #post-info{
+    font-size: 16px;
+    color: #505059;
+  }
+</style>

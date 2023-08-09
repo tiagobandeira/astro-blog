@@ -1,0 +1,28 @@
+---
+import  Layout  from '../layouts/Layout.astro'
+import PageName from '../components/PageName.astro'
+
+const blogName = "Astro Blog"
+const author = "[Nome do Autor]"
+---
+
+<Layout title="Sobre">
+    <PageName pageName={blogName} />
+    <section>
+        <p>Bem-vindo ao {blogName}!</p>
+
+        <p>Olá e seja bem-vindo ao meu cantinho virtual! Sou {author}, um entusiasta apaixonado por aprendizado, programação, música, matemática e tudo o que envolve explorar o mundo através das palavras.</p>
+
+        <p>Este blog nasceu da minha paixão por escrever e minha incessante curiosidade em mergulhar em diversos tópicos. Aqui, você encontrará uma coleção de artigos, tutoriais e reflexões que refletem meu compromisso em compartilhar conhecimento de forma simples e acessível.</p>
+
+        <p>Desde dicas práticas sobre programação até explorações profundas na teoria da música; desde desafios divertidos de matemática até reflexões pessoais sobre a jornada de aprendizado – este espaço é um reflexo do que me inspira e me motiva.</p>
+
+        <p>Uma das coisas que tornam este projeto especial é que ele é totalmente aberto para todos. Você pode explorar o código-fonte e criar sua própria versão deste blog, personalizando-o de acordo com seus interesses e paixões. Acredito na comunidade e na colaboração, e este espaço é um convite para todos que desejam se juntar a mim nessa jornada.</p>
+
+        <p>Obrigado por visitar {blogName}. Espero que você encontre aqui algo que inspire, informe e entusiasme. Sinta-se à vontade para explorar, comentar e compartilhar – afinal, a jornada é muito mais divertida quando compartilhamos nossas descobertas!</p>
+
+        <p>Vamos aprender, crescer e criar juntos!</p>
+
+        <p>Com carinho, <br>{author}</p>
+    </section>
+</Layout>

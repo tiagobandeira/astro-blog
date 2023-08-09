@@ -7,9 +7,16 @@ const author = "[Nome do Autor]"
 ---
 
 <Layout title="Sobre">
-    <PageName pageName={blogName} />
+    <PageName pageName={blogName}>
+        <p>Conheça mais sobre o {blogName}.
+            <span class="tag">#Tecnologia</span>
+            <span class="tag">#Curiosidades</span>
+            <span class="tag">#Tutoriais</span>
+        </p>
+    </PageName>
     <section>
-        <p>Bem-vindo ao {blogName}!</p>
+        <h3>Sobre o {blogName}</h3>
+
 
         <p>Olá e seja bem-vindo ao meu cantinho virtual! Sou {author}, um entusiasta apaixonado por aprendizado, programação, música, matemática e tudo o que envolve explorar o mundo através das palavras.</p>
 

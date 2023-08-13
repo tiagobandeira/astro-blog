@@ -1,0 +1,82 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import PageName from "../components/PageName.astro";
+
+const posts = await getCollection('posts').catch(e=>[])
+---
+
+<Layout title="Artigos">
+    <PageName pageName="Artigos">
+        <p>Conheça nossos posts.
+            <span class="tag">#Tecnologia</span>
+            <span class="tag">#Curiosidades</span>
+            <span class="tag">#Tutoriais</span>
+        </p>
+    </PageName>
+    <section> 
+        <div id="articles">
+            {!posts.length? "Sem artigos por enquanto.": posts.map((post) => 
+                <article class="list">
+                    <a  href={'/post/' + post.slug}>
+                        <div class="list-header">
+                            <b>{post.data.title}</b>
+                        </div>
+                        <div class="list-content">
+                            <p> {post.data.description} </p>
+                        </div>
+                        <div class="list-footer">
+                            <span class="label">
+                                {post.data.date}
+                            </span>
+                            {post.data.tags.map(tag => <span class="tag">  #{tag} </span>)}
+                        </div>      
+                    </a>                 
+                </article>
+
+            )}
+        </div>
+    </section>
+</Layout>
+
+
+
+<style>
+    #articles{
+        display: flex; 
+        flex-direction: column;
+        row-gap: 1em;
+    }
+    .list a{
+        color: inherit;
+        text-decoration: inherit;
+    }
+    .list a .tag{
+        color: rgb(113 113 122 / 1);
+        text-decoration: inherit;
+    }
+    .list a:hover b{
+        color: rgb(117 117 255 );
+        text-decoration: underline;
+    }
+    .list-content{
+        font-size: 15px;
+    }
+    .list-content p{
+        margin: 4px 0px 4px 0px;
+    }
+    .list-footer{
+        height: inherit;
+        display: flex; 
+        flex-wrap: wrap; 
+        align-items: center;
+        font-size: 14px;
+    }
+    .label{
+        color: rgb(113 113 122 / 1);
+        margin-right: 4px;
+    }
+    .list-footer .tag{
+        font-size: 14px;
+    }
+</style>

@@ -16,9 +16,7 @@ const { title, posts } = Astro.props
             <article class="card">
                 <a href={'/post/' + post.slug} >
                     <div class="card-header">
-                        <!--<a href={'/post/' + post.slug} >-->
-                            <b>{post.data.title}</b>
-                        <!--</a> -->  
+                        <b>{post.data.title}</b> 
                     </div>
                     <div class="card-content">
                         <p> {post.data.description} </p>
@@ -58,10 +56,6 @@ const { title, posts } = Astro.props
         color: inherit;
         text-decoration: inherit;
     }
-    /* .card a:hover span{
-        color: rgb(117 117 255 );
-        text-decoration: inherit;
-    } */
     .card a:hover b{
         color: rgb(117 117 255 );
         text-decoration: underline;

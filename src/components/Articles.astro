@@ -13,22 +13,23 @@ const { title, posts } = Astro.props
     <h3> {title} </h3> 
     <div id="articles">
         {!posts.length ? "Sem artigos por enquanto.": posts.map((post: CollectionEntry<'posts'>) => 
-            <article class="card">
-                <a href={'/post/' + post.slug} >
-                    <div class="card-header">
-                        <b>{post.data.title}</b> 
-                    </div>
-                    <div class="card-content">
-                        <p> {post.data.description} </p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="label">
-                            {post.data.date}
-                        </span>
-                        {post.data.tags.map(tag => <span class="tag">  #{tag} </span>)}
-                    </div>                   
-                </a>
-            </article>
+               
+                    <a href={'/post/' + post.slug} class="card">
+                        
+                        <div class="card-header">
+                            <b>{post.data.title}</b> 
+                        </div>
+                        <div class="card-content">
+                            <p> {post.data.description} </p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="label">
+                                {post.data.date}
+                            </span>
+                            {post.data.tags.map(tag => <span class="tag">  #{tag} </span>)}
+                        </div>                   
+                    </a>
+             
         )}
     </div>
 </section>
@@ -45,18 +46,18 @@ const { title, posts } = Astro.props
         .card{
             max-width: 305px;
         }
-        
     }
+    
     .card{
         flex-grow: 1;
         box-shadow: 0px 0px 2px lightblue;
         padding: 1em;
     }
-    .card a{
+    #articles a{
         color: inherit;
         text-decoration: inherit;
     }
-    .card a:hover b{
+    #articles a:hover b{
         color: rgb(117 117 255 );
         text-decoration: underline;
     }
